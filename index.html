@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mudora Cup</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <div class="brand">Mudora Cup</div>
+      <div class="navlinks">
+        <a href="#infos">Infos</a>
+        <a href="#teilnehmer">Teilnehmer</a>
+        <a href="#anmeldung">Anmeldung</a>
+        <a href="#gruppen">Gruppen</a>
+        <a href="draw.html">Auslosung</a>
+        <a href="#bracket">Turnierbaum</a>
+        <a href="admin.html">Admin</a>
+      </div>
+    </nav>
+    <section class="heroContent">
+      <p class="eyebrow">A Link to the Past Randomizer Turnier</p>
+      <h1>Mudora Cup</h1>
+      <p class="subtitle">Ein kleines Community-Turnier für 8–12 Racer mit Gruppenphase und KO-Runde.</p>
+      <div class="heroActions">
+        <a class="button primary" href="https://discord.gg/k7KUhkMP" target="_blank" rel="noreferrer">Discord beitreten</a>
+        <a class="button" href="draw.html">Auslosung ansehen</a>
+      </div>
+    </section>
+  </header>
+
+  <main class="container">
+    <section id="infos" class="card grid2">
+      <div>
+        <h2>Turnier-Infos</h2>
+        <p><strong>Name:</strong> Mudora Cup</p>
+        <p><strong>Spiel:</strong> The Legend of Zelda: A Link to the Past Randomizer</p>
+        <p><strong>Format:</strong> Gruppenphase + KO-Runde</p>
+        <p><strong>Discord:</strong> <a href="https://discord.gg/k7KUhkMP" target="_blank" rel="noreferrer">https://discord.gg/k7KUhkMP</a></p>
+      </div>
+      <div class="notice">
+        <h3>Vorschlag für 8–12 Spieler</h3>
+        <p>Bei 8 Spielern: 2 Gruppen à 4 Spieler, Top 2 weiter.</p>
+        <p>Bei 9–12 Spielern: 3 Gruppen, danach Viertelfinale.</p>
+      </div>
+    </section>
+
+
+    <section id="anmeldung" class="card grid2">
+      <div>
+        <h2>Anmeldung</h2>
+        <p class="hint">Du möchtest beim Mudora Cup mitspielen? Trag dich hier ein. Deine Anmeldung wird danach vom Admin bestätigt.</p>
+        <label>Racer-Name</label>
+        <input id="regName" placeholder="z.B. Wolle_91" />
+        <label>Discord-Name optional</label>
+        <input id="regDiscord" placeholder="z.B. wolle_91" />
+        <label>Nachricht optional</label>
+        <input id="regNote" placeholder="z.B. bevorzugte Zeiten oder Hinweis" />
+        <button class="button primary" onclick="submitRegistration()">Anmeldung abschicken</button>
+        <div id="registrationStatus" class="status"></div>
+      </div>
+      <div class="notice">
+        <h3>Offene Anmeldungen</h3>
+        <div id="registrationList" class="players empty">Lade Anmeldungen...</div>
+      </div>
+    </section>
+
+    <section id="teilnehmer" class="card">
+      <div class="sectionHead">
+        <h2>Teilnehmer</h2>
+        <button class="smallButton" onclick="loadData()">Aktualisieren</button>
+      </div>
+      <div id="players" class="players empty">Lade Teilnehmer...</div>
+    </section>
+
+    <section id="gruppen" class="card">
+      <div class="sectionHead">
+        <h2>Gruppenphase</h2>
+      </div>
+      <div id="groups" class="groups empty">Lade Gruppen...</div>
+    </section>
+
+    <section id="matches" class="card">
+      <h2>Matches</h2>
+      <div id="matchList" class="matchList empty">Lade Matches...</div>
+    </section>
+
+    <section id="bracket" class="card">
+      <h2>KO-Runde / Turnierbaum</h2>
+      <div id="bracketBox" class="bracket empty">Lade Turnierbaum...</div>
+    </section>
+  </main>
+
+  <footer class="footer">Mudora Cup · ALttPR Community Tournament</footer>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

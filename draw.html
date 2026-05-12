@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mudora Cup Auslosung</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="adminHeader drawHeader">
+    <nav class="nav">
+      <div class="brand">Mudora Cup Auslosung</div>
+      <div class="navlinks">
+        <a href="index.html">Turnierseite</a>
+        <a href="admin.html">Admin</a>
+      </div>
+    </nav>
+    <div class="adminIntro">
+      <p class="eyebrow">Live Draw</p>
+      <h1>Auslosung</h1>
+      <p>Ziehe die Teilnehmer Schritt für Schritt und verteile sie automatisch auf die Gruppen.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="drawLogin" class="card loginCard">
+      <h2>Auslosung starten</h2>
+      <p class="hint">Zum Ziehen brauchst du den Admin-Key. Zuschauer können die Seite öffnen und aktualisieren, aber nicht selbst ziehen.</p>
+      <label>Admin-Key</label>
+      <input id="adminKey" type="password" placeholder="Admin-Key aus Code.gs" autocomplete="off" />
+      <div class="row">
+        <button class="button primary" onclick="drawLogin()">Einloggen</button>
+        <button class="button" onclick="loadData()">Nur ansehen</button>
+      </div>
+      <div id="status" class="status"></div>
+    </section>
+
+    <section class="card drawStage">
+      <p class="eyebrow">Nächster Pick</p>
+      <div id="drawReveal" class="drawReveal">Noch nicht gezogen</div>
+      <p id="drawSubline" class="subtitle">Trage zuerst im Admin-Bereich Teilnehmer ein.</p>
+      <div id="drawControls" class="row hidden">
+        <button class="button primary bigButton" onclick="drawNextPlayer()">Nächsten Spieler ziehen</button>
+        <button class="button" onclick="resetDrawConfirm()">Auslosung zurücksetzen</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="sectionHead">
+        <h2>Gezogene Gruppen</h2>
+        <button class="smallButton" onclick="loadData()">Aktualisieren</button>
+      </div>
+      <div id="drawGroups" class="groups empty">Lade Auslosung...</div>
+    </section>
+
+    <section class="card">
+      <h2>Noch im Lostopf</h2>
+      <div id="drawPool" class="players empty">Lade Lostopf...</div>
+    </section>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

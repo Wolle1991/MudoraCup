@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mudora Cup Admin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="adminHeader">
+    <nav class="nav">
+      <div class="brand">Mudora Cup Admin</div>
+      <div class="navlinks">
+        <a href="index.html">Zurück zur Seite</a>
+        <a href="draw.html">Auslosung</a>
+      </div>
+    </nav>
+    <div class="adminIntro">
+      <h1>Admin-Bereich</h1>
+      <p>Hier trägst du Teilnehmer, Gruppen und Ergebnisse ein. Besucher sehen diesen Bereich nicht auf der Hauptseite.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="loginSection" class="card loginCard">
+      <h2>Admin-Login</h2>
+      <p class="hint">Die Apps-Script-URL liegt in <strong>config.js</strong>. Der Admin-Key wird nicht gespeichert und muss bei jedem Öffnen neu eingegeben werden.</p>
+      <label>Admin-Key</label>
+      <input id="adminKey" type="password" placeholder="Admin-Key aus Code.gs" autocomplete="off" />
+      <div class="row">
+        <button class="button primary" onclick="adminLogin()">Einloggen</button>
+        <button class="button" onclick="testConnection()">Verbindung testen</button>
+      </div>
+      <div id="status" class="status"></div>
+    </section>
+
+    <div id="adminContent" class="hidden">
+      <section class="card">
+        <div class="sectionHead">
+          <div>
+            <h2>Admin ist angemeldet</h2>
+            <p class="hint">Der Key ist nur bis zum Neuladen dieser Seite aktiv.</p>
+          </div>
+          <button class="button" onclick="adminLogout()">Ausloggen</button>
+        </div>
+        <div id="apiInfo" class="hint"></div>
+      </section>
+
+      <section class="card grid2">
+        <div>
+          <h2>Teilnehmer hinzufügen</h2>
+          <label>Name</label>
+          <input id="playerName" placeholder="z.B. Wolle_91" />
+          <label>Gruppe</label>
+          <select id="playerGroup">
+            <option value="A">Gruppe A</option>
+            <option value="B">Gruppe B</option>
+            <option value="C">Gruppe C</option>
+          </select>
+          <button class="button primary" onclick="addPlayer()">Teilnehmer speichern</button>
+        </div>
+        <div>
+          <h2>Match eintragen</h2>
+          <label>Phase</label>
+          <select id="matchPhase">
+            <option value="Gruppe">Gruppe</option>
+            <option value="Viertelfinale">Viertelfinale</option>
+            <option value="Halbfinale">Halbfinale</option>
+            <option value="Finale">Finale</option>
+            <option value="Spiel um Platz 3">Spiel um Platz 3</option>
+          </select>
+          <label>Gruppe / Runde</label>
+          <input id="matchGroup" placeholder="A, B, C oder KO" />
+          <label>Spieler 1</label>
+          <input id="p1" />
+          <label>Spieler 2</label>
+          <input id="p2" />
+          <label>Sieger</label>
+          <input id="winner" />
+          <label>Zeit / Ergebnis</label>
+          <input id="result" placeholder="z.B. 1:45:33 oder FF" />
+          <button class="button primary" onclick="addMatch()">Match speichern</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="sectionHead">
+          <div>
+            <h2>Auslosung</h2>
+            <p class="hint">Die eigentliche Live-Auslosung läuft über <strong>draw.html</strong>.</p>
+          </div>
+          <div class="row compactRow">
+            <a class="button primary" href="draw.html">Zur Auslosung</a>
+            <button class="button" onclick="resetDrawConfirm()">Auslosung zurücksetzen</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="sectionHead">
+          <h2>Aktuelle Daten</h2>
+          <button class="button" onclick="loadData()">Neu laden</button>
+        </div>
+        <div id="adminData" class="matchList empty">Noch keine Daten geladen.</div>
+      </section>
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
